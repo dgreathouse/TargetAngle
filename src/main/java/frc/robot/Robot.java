@@ -22,7 +22,7 @@ public class Robot extends TimedRobot {
   @Override
   public void robotPeriodic() {
 
-    TargetAngle ta = new TargetAngle();
+    TargetAngle ta = new TargetAngle(45);
     // Test 0,0
     ta.setTargetAngle(0, 0);
     double ang = ta.getTargetAngle().getDegrees();

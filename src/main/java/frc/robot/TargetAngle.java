@@ -12,6 +12,7 @@ public class TargetAngle {
     private Rotation2d m_targetAngle;
     private double m_actualAngle;
     private double m_hyp;
+    private double m_discreteAngle = 45;
     // END  Class Data
 
     // BEGIN Class Constructors 
@@ -19,10 +20,12 @@ public class TargetAngle {
 
     }
     public TargetAngle(double _ang){
-        m_targetAngle = new Rotation2d(_ang);
+      m_discreteAngle = _ang;
+      m_targetAngle = new Rotation2d(0);
     }
     public TargetAngle(double _x, double _y){
-        m_targetAngle = new Rotation2d(_x, _y);
+      
+      m_targetAngle = new Rotation2d(_x, _y);
     }
     // END Class Constructors
 
@@ -34,7 +37,7 @@ public class TargetAngle {
      * @param _y The y value that usually comes from the joystick
      */
     public void setTargetAngle(double _x, double _y){
-        double midAngle = 45.0;
+        double midAngle = m_discreteAngle;
         m_hyp = Math.hypot(_x, _y);
         if(Math.abs(m_hyp) > 0.8){
           m_actualAngle = Math.toDegrees(Math.atan2(_y,_x));
